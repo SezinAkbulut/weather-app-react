@@ -1,3 +1,4 @@
+// WeeklyForecast.jsx
 import React from "react";
 
 const WeeklyForecast = ({ weeklyForecast }) => {
@@ -5,23 +6,32 @@ const WeeklyForecast = ({ weeklyForecast }) => {
     return null;
   }
 
-  // Assuming weeklyForecast is an array of daily forecast data
-  const weeklyForecastCards = weeklyForecast.map((dayForecast, index) => (
-    <div key={index} className="weekly-forecast-card">
-      <h3>{dayForecast.date}</h3>
-      <img
-        className="weekly-icon"
-        src={`https:${dayForecast.day.condition.icon}`}
-        alt="icon"
-        width="50"
-        height="50"
-      />
-      <p className="weekly-temp">{dayForecast.day.avgtemp_c}&#176;</p>
-      <p className="weekly-condition">{dayForecast.day.condition.text}</p>
-    </div>
-  ));
+  // Add a console.log to see the weeklyForecast data
+  console.log("Weekly Forecast Data:", weeklyForecast);
 
-  return <div className="weekly-forecast-container">{weeklyForecastCards}</div>;
+  const renderDailyForecast = () => {
+    return weeklyForecast.map((day, index) => (
+      <div key={index} className="daily-forecast">
+        <h3>{formatDatum(day.date)}</h3>
+        <img
+          className="icon"
+          src={`https:${day.day.condition.icon}`}
+          alt="icon"
+          width="50"
+          height="50"
+        />
+        <p>{Math.round(day.day.avgtemp_c)}&#176;C</p>
+        <p>{day.day.condition.text}</p>
+      </div>
+    ));
+  };
+
+  const formatDatum = (date) => {
+    const [year, month, day] = date.split("-");
+    return `${day}/${month}/${year}`;
+  };
+
+  return <div className="weekly-forecast">{renderDailyForecast()}</div>;
 };
 
 export default WeeklyForecast;

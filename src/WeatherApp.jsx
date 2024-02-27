@@ -43,7 +43,6 @@ const WeatherApp = () => {
             hourlyForecast={weatherData?.forecast?.forecastday[0]?.hour}
           />
           <WeeklyForecast weeklyForecast={weatherData?.forecast?.forecastday} />
-          {/* ... Render other components */}
         </>
       )}
     </div>

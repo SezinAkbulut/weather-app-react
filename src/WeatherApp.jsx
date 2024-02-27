@@ -1,3 +1,4 @@
+// WeatherApp.jsx
 import React, { useState, useEffect } from "react";
 import WeatherDetails from "./WeatherDetails";
 import ForecastHourly from "./ForecastHourly";
@@ -37,6 +38,7 @@ const WeatherApp = () => {
     <div className="weather-app">
       {weatherData && (
         <>
+          <WeatherDetails data={weatherData} />
           <ForecastHourly
             hourlyForecast={weatherData?.forecast?.forecastday[0]?.hour}
           />
@@ -44,36 +46,6 @@ const WeatherApp = () => {
           {/* ... Render other components */}
         </>
       )}
-
-      <div className="container">
-        <div className="current">
-          <h1 className="temp">{weatherData?.current?.temp_c}&#176;</h1>
-          <div className="city-time">
-            <h1 className="name">{weatherData?.location?.name}</h1>
-
-            <small>
-              <span className="time">
-                {weatherData?.location?.localtime.split(" ")[1]}
-              </span>
-              <span className="date">
-                {formatDatum(weatherData?.location?.localtime.split(" ")[0])}
-              </span>
-            </small>
-          </div>
-          <div className="weather">
-            <img
-              className="icon"
-              src={`https:${weatherData?.current?.condition?.icon}`}
-              alt="icon"
-              width="50"
-              height="50"
-            />
-            <span className="condition">
-              {weatherData?.current?.condition?.text}{" "}
-            </span>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

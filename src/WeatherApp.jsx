@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import WeatherDetails from "./WeatherDetails";
 import "./WeatherApp.css";
 
 const WeatherApp = () => {

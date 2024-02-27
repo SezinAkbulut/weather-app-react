@@ -1,6 +1,7 @@
-// WeatherApp.jsx
 import React, { useState, useEffect } from "react";
+import WeatherDetails from "./WeatherDetails";
 import ForecastHourly from "./ForecastHourly";
+import WeeklyForecast from "./WeeklyForecast";
 import "./WeatherApp.css";
 
 const WeatherApp = () => {
@@ -39,6 +40,8 @@ const WeatherApp = () => {
           <ForecastHourly
             hourlyForecast={weatherData?.forecast?.forecastday[0]?.hour}
           />
+          <WeeklyForecast weeklyForecast={weatherData?.forecast?.forecastday} />
+          {/* ... Render other components */}
         </>
       )}
 

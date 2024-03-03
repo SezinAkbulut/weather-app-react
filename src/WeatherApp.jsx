@@ -6,28 +6,11 @@ import "./WeatherApp.css";
 
 const WeatherApp = () => {
   const [weatherData, setWeatherData] = useState(null);
-  const [backgroundImage, setBackgroundImage] = useState(null);
 
   useEffect(() => {
     console.log("Fetching weather data...");
     fetchWeatherData("Gent");
   }, []);
-
-  useEffect(() => {
-    if (weatherData) {
-      const sunrise = new Date(
-        weatherData.forecast.forecastday[0].astro.sunrise
-      );
-      const sunset = new Date(weatherData.forecast.forecastday[0].astro.sunset);
-      const currentDateTime = new Date(weatherData.location.localtime);
-
-      if (currentDateTime > sunrise && currentDateTime < sunset) {
-        setBackgroundImage("morning.jpg");
-      } else {
-        setBackgroundImage("night.jpg");
-      }
-    }
-  }, [weatherData]);
 
   const fetchWeatherData = async (cityInput) => {
     try {
@@ -46,10 +29,7 @@ const WeatherApp = () => {
   console.log("Rendering WeatherApp...");
 
   return (
-    <div
-      className="weather-app"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
-    >
+    <div className="weather-app">
       <WeatherDetails data={weatherData} />
       <WeeklyForecast weeklyForecast={weatherData?.forecast?.forecastday} />
       <Panel weatherData={weatherData} fetchWeatherData={fetchWeatherData} />

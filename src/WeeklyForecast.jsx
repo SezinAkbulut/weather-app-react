@@ -40,3 +40,47 @@ const WeeklyForecast = ({ weeklyForecast }) => {
 };
 
 export default WeeklyForecast;
+
+{
+  /*import React from "react";
+import "./style/WeeklyForecast.css";
+
+const WeeklyForecast = ({ weeklyForecast }) => {
+  if (!weeklyForecast) {
+    return null;
+  }
+
+  console.log("Weekly Forecast Data:", weeklyForecast);
+
+  const renderDailyForecast = () => {
+    return weeklyForecast.map((day, index) => (
+      <div key={index} className="daily-forecast">
+        <h3>{getDayName(day.date)}</h3>
+        <img
+          className="icondaily"
+          src={`https:${day.day.condition.icon}`}
+          alt="icon"
+          width="50"
+          height="50"
+        />
+      </div>
+    ));
+  };
+
+  const getDayName = (date) => {
+    const options = { weekday: "short" };
+    const dayName = new Date(date).toLocaleDateString("en-US", options);
+    return dayName;
+  };
+
+  return (
+    <div className="weekly-forecast">
+      <div className="weekly">{renderDailyForecast()}</div>
+    </div>
+  );
+};
+
+export default WeeklyForecast;
+
+*/
+}

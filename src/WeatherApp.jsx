@@ -30,7 +30,7 @@ const WeatherApp = () => {
         },
         (error) => {
           console.error("Error getting user location:", error);
-          // If getting user location fails or denied, default to a specific city (e.g., "Gent")
+
           fetchWeatherData("Gent");
         }
       );
@@ -38,7 +38,6 @@ const WeatherApp = () => {
 
     console.log("Fetching weather data...");
 
-    // Fetch weather data based on user's location or default city
     fetchWeatherByLocation();
   }, []);
 

@@ -1,0 +1,17 @@
+.air-condition {
+  width: 100%;
+  color: white;
+}
+
+.air-condition h4 {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.weather-info li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 1rem;
+}

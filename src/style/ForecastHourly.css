@@ -1,0 +1,22 @@
+.forecasth {
+  width: 580px;
+  height: 162px;
+  background-color: rgba(131, 130, 130, 0.358);
+  border-radius: 25px;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.hourly-forecast {
+  display: flex;
+  color: #fff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  list-style: none;
+  padding: 0;
+  margin-left: 1rem;
+}

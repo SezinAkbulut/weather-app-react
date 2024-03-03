@@ -7,15 +7,10 @@ import "./WeatherApp.css";
 const WeatherApp = () => {
   const [weatherData, setWeatherData] = useState(null);
 
-  useEffect(() => {
-    console.log("Fetching weather data...");
-    fetchWeatherData("Gent");
-  }, []);
-
-  const fetchWeatherData = async (cityInput) => {
+  const fetchWeatherData = async (location) => {
     try {
       const response = await fetch(
-        `https://api.weatherapi.com/v1/forecast.json?key=75873978036c4398b78102839242702&q=${cityInput}&q=07112&days=14`
+        `https://api.weatherapi.com/v1/forecast.json?key=75873978036c4398b78102839242702&q=${location}&days=14`
       );
       const data = await response.json();
       setWeatherData(data);
@@ -25,6 +20,27 @@ const WeatherApp = () => {
       alert("City not found, please try again");
     }
   };
+
+  useEffect(() => {
+    const fetchWeatherByLocation = () => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          fetchWeatherData(`${latitude},${longitude}`);
+        },
+        (error) => {
+          console.error("Error getting user location:", error);
+          // If getting user location fails or denied, default to a specific city (e.g., "Gent")
+          fetchWeatherData("Gent");
+        }
+      );
+    };
+
+    console.log("Fetching weather data...");
+
+    // Fetch weather data based on user's location or default city
+    fetchWeatherByLocation();
+  }, []);
 
   console.log("Rendering WeatherApp...");
 

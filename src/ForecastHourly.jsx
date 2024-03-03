@@ -5,20 +5,17 @@ import "./style/ForecastHourly.css";
 const ForecastHourly = ({ hourlyForecast }) => {
   console.log("Hourly Forecast Data:", hourlyForecast);
 
-  // Find the index of the current hour
   const currentHourIndex = hourlyForecast.findIndex((hour) => {
     const now = new Date();
     const hourTime = new Date(hour.time);
     return now.getHours() === hourTime.getHours();
   });
 
-  // Slice the array to get the next 6 hours, handling the case where the current hour is not found
   const next6Hours =
     currentHourIndex !== -1
       ? hourlyForecast.slice(currentHourIndex, currentHourIndex + 6)
       : [];
 
-  // Extract labels (hours) and temperatures for Chart.js
   const labels = next6Hours.map((hour) => hour.time.split(" ")[1]);
   const temperatures = next6Hours.map((hour) => hour.temp_c);
 
@@ -29,7 +26,6 @@ const ForecastHourly = ({ hourlyForecast }) => {
       return;
     }
 
-    // Destroy existing chart if it exists
     const existingChart = Chart.getChart(chartRef.current);
     if (existingChart) {
       existingChart.destroy();

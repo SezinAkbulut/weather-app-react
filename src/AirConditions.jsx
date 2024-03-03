@@ -16,9 +16,8 @@ const AirCondition = ({ weatherData }) => {
 
     const interval = setInterval(updateTime, 1000);
 
-    // Clear the interval when the component is unmounted
     return () => clearInterval(interval);
-  }, []); // Empty dependency array to run the effect only once on mount
+  }, []);
 
   return (
     <ul className="air-condition">
